@@ -1,0 +1,17 @@
+{
+    "cron.jobs": {
+        "jobs": [
+            {
+                "name": "My AutoSave using CronTab format",
+                "description": "Saves all opened files all 30 seconds.",
+                
+                "time": "*/40 * * * *",
+                "autoStart": True,
+                "action": {
+                    "type": "script",
+                    "script": ".src/result.ipynb"
+                }
+            }
+        ]
+    }
+}
