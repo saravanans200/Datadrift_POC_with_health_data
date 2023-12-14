@@ -1,6 +1,19 @@
-import pandas as pd
-import import_ipynb
-import logisticRegressionbefore
+import nbformat
+from nbconvert.preprocessors import ExecutePreprocessor
+import schedule 
+import time 
 
-result_data = pd.read_csv('result.csv')
-print(result_data)
+print("started")
+def func(): 
+    print("Geeksforgeeks")
+    filename = 'src/result.ipynb'
+    with open(filename) as ff:
+        nb_in = nbformat.read(ff, nbformat.NO_CONVERT)    
+    ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
+    nb_out = ep.preprocess(nb_in)
+  
+schedule.every(1).minutes.do(func) 
+  
+while True: 
+    schedule.run_pending() 
+    time.sleep(1)
